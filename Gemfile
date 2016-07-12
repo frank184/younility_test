@@ -15,10 +15,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-gem 'bootstrap-sass'
-gem 'devise'
-gem 'high_voltage'
-gem 'pundit'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
@@ -36,3 +32,10 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+
+gem 'high_voltage'
+gem 'devise'
+gem 'pundit'
