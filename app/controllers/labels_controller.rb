@@ -33,7 +33,6 @@ class LabelsController < ApplicationController
   end
 
   def destroy
-    authorize(current_user)
     @label.destroy
     flash.now[:success] = "The label #{@label.name} was successfully removed!"
   end
