@@ -34,6 +34,10 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
