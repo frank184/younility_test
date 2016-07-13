@@ -11,41 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712203439) do
+ActiveRecord::Schema.define(version: 20160712223907) do
 
   create_table "labels", force: :cascade do |t|
-    t.string   "name"
-    t.string   "colour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "colour",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "labels_users", id: false, force: :cascade do |t|
-    t.integer "user_id",  null: false
-    t.integer "label_id", null: false
+    t.integer "user_id",  limit: 4, null: false
+    t.integer "label_id", limit: 4, null: false
   end
 
-  add_index "labels_users", ["label_id", "user_id"], name: "index_labels_users_on_label_id_and_user_id", unique: true
-  add_index "labels_users", ["user_id", "label_id"], name: "index_labels_users_on_user_id_and_label_id", unique: true
+  add_index "labels_users", ["label_id", "user_id"], name: "index_labels_users_on_label_id_and_user_id", using: :btree
+  add_index "labels_users", ["user_id", "label_id"], name: "index_labels_users_on_user_id_and_label_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.integer  "role"
+    t.string   "name",                   limit: 255
+    t.integer  "role",                   limit: 4,   default: 0
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -11,5 +11,16 @@ pp CreateAdminService.new.call
 
 case Rails.env
 when 'development'
+  labels = [
+    {name: 'Back-end Developer', colour: '#ff0000'},
+    {name: 'Front-end Developer', colour: '#00ff00'},
+    {name: 'Database Administrator', colour: '#cc0099'},
+    {name: 'Project Manager', colour: '#ffff00'},
+    {name: 'Project Manager', colour: '#ffff00'}
+  ].each { |label| Label.find_or_create_by(label) }
   100.times { |index| pp User.create_with(password: "password").find_or_create_by(email: "user#{index}@mail.com") }
+  User.find_each do |user|
+    user.labels << Label.all.sample
+    user.save
+  end
 end
