@@ -9,8 +9,8 @@ require 'pp'
 
 pp CreateAdminService.new.call
 
-case Rails.env
-when 'development'
+# case Rails.env
+# when 'development'
   labels = [
     {name: 'Back-end Developer', colour: '#ff0000'},
     {name: 'Front-end Developer', colour: '#00ff00'},
@@ -24,4 +24,4 @@ when 'development'
     user.labels << label
     puts user.save ? "Added #{label.name} label to #{user.email}" : "#{user.email} already had #{label.name}"
   end
-end
+# end
