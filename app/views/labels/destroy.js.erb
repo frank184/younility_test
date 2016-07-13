@@ -1,0 +1,6 @@
+<% if flash.now[:success] %>
+  $('#<%= @label.id %>').remove()
+  swal("Label Deleted!", "<%= j flash.now[:success].html_safe %>", "success")
+<% else %>
+  swal("Uhoh...", "<%= j flash.now[:error].html_safe %>", "error")
+<% end %>

@@ -1,0 +1,7 @@
+<% if flash.now[:success] %>
+  swal("Label Created!", "<%= j flash.now[:success].html_safe %>", "success")
+  $('#labels-table tbody').prepend('<%= j render "row", label: @label%>')
+  $('#new-label-form').remove()
+<% else %>
+  swal("Uhoh...", "<%= j flash.now[:error].html_safe %>", "error")
+<% end %>

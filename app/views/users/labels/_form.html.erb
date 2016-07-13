@@ -1,0 +1,9 @@
+<%= form_for(@user, url: user_label_path(id: @user.id), html: {remote: true, method: :patch, class: 'pull-right'}) do |f| %>
+  <% @labels.each do |label| %>
+    <div class="sub-form-group">
+      <%= check_box_tag 'user[label_ids][]', label.id, @user.labels.include?(label) %>
+      <%= label_tag 'user[label_ids][]', label.name %>
+    </div>
+  <% end %>
+  <%= f.button icon(:tags, 'Update'), class: 'button-xs', data: { disable_with: "#{icon(:refresh, 'Updating...', class: 'fa-spin')}"} %>
+<% end %>

@@ -10,7 +10,38 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require font-awesome/imports
+ *= require font-awesome-sass/imports
+ *= require 1st_load_framework
+ *= require sweetalert
+ *= require bootstrap-colorpicker
  *= require_tree .
  *= require_self
  */
+
+.text-right {
+  text-align: right;
+}
+
+.sub-form-group {
+  label {
+    font-weight: lighter;
+  }
+}
+
+.table {
+  display:table;
+}
+.tr {
+  display:table-row;
+}
+.td {
+  display:table-cell;
+}
+
+.input-sm {
+  height: 26px !important;
+}
+
+.stop-scrolling {
+  overflow: inherit !important;
+}

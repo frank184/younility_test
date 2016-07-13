@@ -1,0 +1,9 @@
+<% if flash.now[:success] %>
+  // consecutive swal issue
+  setTimeout(function() {
+    swal("User Deleted!", "<%= j flash.now[:success].html_safe %>", "success")
+  }, 100)
+  $('#<%= @user.id %>').remove()
+<% else %>
+  swal("Uhoh...", "<%= j flash.now[:error].html_safe %>", "error")
+<% end %>

@@ -1,0 +1,19 @@
+<tr id="<%= user.id %>">
+  <td>
+    <%= link_to user.email, user %>
+  </td>
+  <td>
+    <%= form_for(user, remote: true, html: {class: 'form-inline'}) do |f| %>
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize, role]}, {}, {class: 'form-control input-sm'}) %>
+      <%= f.button icon(:lock, 'Change Role'), class: 'button-xs', data: { disable_with: "#{icon(:refresh, 'Updating...', class: 'fa-spin')}"} %>
+    <% end %>
+  </td>
+  <td>
+    <% user.labels.each do |label| %>
+      <%= render "labels/label", label: label %>
+    <% end %>
+  </td>
+  <td class="actions text-right">
+    <%= render 'actions', user: user %>
+  </td>
+</tr>

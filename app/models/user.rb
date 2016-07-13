@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:user, :vip, :admin]
-  has_and_belongs_to_many :labels
+  # has_and_belongs_to_many :labels
+  has_many :user_labels
+  has_many :labels, through: :user_labels
 end

@@ -1,0 +1,24 @@
+<%= form_for @label, method: @label.new_record? ? :post : :patch, remote: true, html: {id: @label.id.presence || 'new-label-form', class: 'form-inline row label-form'} do |f| %>
+<tr>
+    <div class="form-group col-xs-3">
+      <td>
+        <%= f.text_field :name, class: 'form-control input-sm' %>
+      </td>
+    </div>
+    <div class="form-group col-xs-3">
+      <td>
+        <%= f.text_field :colour, class: 'colorpicker form-control  input-sm' %>
+      </td>
+    </div>
+    <div class="form-group col-xs-3">
+      <td>
+        <%= render @label %>
+      </td>
+    </div>
+    <div class="form-group col-xs-3">
+      <td class="text-right">
+        <%= f.button icon(:pencil, 'Update'), class: 'button-xs', data: { disable_with: "#{icon(:refresh, 'Updating...', class: 'fa-spin')}"} %>
+      </td>
+    </div>
+</tr>
+<% end %>

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_authorized
+  before_action :set_user, only: [:show, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.all.includes(:labels)
     authorize User
   end
 
@@ -13,26 +14,30 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     authorize @user
     if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+      flash.now[:success] = "The user was successfully updated!"
+      # redirect_to users_path, :notice => "User updated."
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      flash.now[:error] = @user.errors.full_messages.join(",\n")
+      # redirect_to users_path, :alert => "Unable to update user."
     end
   end
 
   def destroy
-    user = User.find(params[:id])
-    authorize user
-    user.destroy
-    redirect_to users_path, :notice => "User deleted."
+    authorize @user
+    @user.destroy
+    flash.now[:success] = "The user was successfully removed!"
+    # redirect_to users_path, :notice => "User deleted."
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def secure_params
-    params.require(:user).permit(:role)
-  end
+    def secure_params
+      params.require(:user).permit(:role)
+    end
 
 end

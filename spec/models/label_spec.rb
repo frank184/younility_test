@@ -35,7 +35,8 @@ describe Label, type: :model do
       it "shouldn't allow duplicate users" do
         subject.users << user
         subject.users << user
-        is_expected.to_not be_valid
+        # is_expected.to_not be_valid
+        is_expected.users.to have(1).items
       end
     end
   end

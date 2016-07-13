@@ -1,0 +1,4 @@
+if ($('#new-label-form').length <= 0) {
+  $('#labels-table tbody').prepend('<%= j render 'form' %>')
+  $('.colorpicker').colorpicker()
+}

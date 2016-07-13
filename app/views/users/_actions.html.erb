@@ -1,0 +1,2 @@
+<%= link_to icon(:pencil, 'Edit'), edit_user_labels_path(user_id: user.id), remote: true, class: 'button-xs' %>
+<%= link_to(icon(:trash, 'Remove'), user_path(user), remote: true, method: :delete, class: 'btn btn-danger btn-xs', data: { disable_with: "#{icon(:refresh, 'Removing...', class: 'fa-spin')}" }) unless user == current_user %>

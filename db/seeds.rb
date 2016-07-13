@@ -20,7 +20,8 @@ when 'development'
   ].each { |label| Label.find_or_create_by(label) }
   100.times { |index| pp User.create_with(password: "password").find_or_create_by(email: "user#{index}@mail.com") }
   User.find_each do |user|
-    user.labels << Label.all.sample
-    user.save
+    label = Label.all.sample
+    user.labels << label
+    puts user.save ? "Added #{label.name} label to #{user.email}" : "#{user.email} already had #{label.name}"
   end
 end

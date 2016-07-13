@@ -1,0 +1,18 @@
+<tr id="<%= label.id %>">
+  <td>
+    <%= label.name %>
+  </td>
+  <td>
+    <%= label.colour %>
+  </td>
+  <td>
+    <% if label.new_record? %>
+    <% else %>
+      <%= render label %>
+    <% end %>
+  </td>
+  <td class="text-right">
+    <%= link_to icon(:pencil, 'Edit'), edit_label_path(label), remote: true, class: 'button-xs' %>
+    <%= link_to icon(:trash, 'Remove'), label_path(label), remote: true, method: :delete, class: 'btn btn-danger btn-xs', data: { disable_with: "#{icon(:refresh, 'Remoing...', class: 'fa-spin')}"} %>
+  </td>
+</tr>

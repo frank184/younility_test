@@ -1,0 +1,6 @@
+<% if flash.now[:success] %>
+  swal("Label Updated!", "<%= j flash.now[:success].html_safe %>", "success")
+  $('#<%= @label.id %>').replaceWith('<%= j render "row", label: @label%>')
+<% else %>
+  swal("Uhoh...", "<%= j flash.now[:error].html_safe %>", "error")
+<% end %>

@@ -20,13 +20,15 @@ ActiveRecord::Schema.define(version: 20160712223907) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "labels_users", id: false, force: :cascade do |t|
-    t.integer "user_id",  limit: 4, null: false
-    t.integer "label_id", limit: 4, null: false
+  create_table "user_labels", force: :cascade do |t|
+    t.integer "user_id",  limit: 4
+    t.integer "label_id", limit: 4
   end
 
-  add_index "labels_users", ["label_id", "user_id"], name: "index_labels_users_on_label_id_and_user_id", using: :btree
-  add_index "labels_users", ["user_id", "label_id"], name: "index_labels_users_on_user_id_and_label_id", using: :btree
+  add_index "user_labels", ["label_id", "user_id"], name: "index_user_labels_on_label_id_and_user_id", unique: true, using: :btree
+  add_index "user_labels", ["label_id"], name: "index_user_labels_on_label_id", using: :btree
+  add_index "user_labels", ["user_id", "label_id"], name: "index_user_labels_on_user_id_and_label_id", unique: true, using: :btree
+  add_index "user_labels", ["user_id"], name: "index_user_labels_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

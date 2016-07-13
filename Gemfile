@@ -37,6 +37,10 @@ end
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'sweetalert-rails'
+gem 'sweet-alert-confirm'
+gem 'bootstrap-colorpicker-rails'
+
 
 gem 'high_voltage'
 gem 'devise'
