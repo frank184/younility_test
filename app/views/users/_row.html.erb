@@ -8,7 +8,7 @@
       <%= f.button icon(:lock, 'Change Role'), class: 'button-xs', data: { disable_with: "#{icon(:refresh, 'Updating...', class: 'fa-spin')}"} %>
     <% end %>
   </td>
-  <td>
+  <td class="user-labels-column">
     <% user.labels.each do |label| %>
       <%= render "labels/label", label: label %>
     <% end %>
