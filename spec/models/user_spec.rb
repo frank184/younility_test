@@ -13,9 +13,9 @@ describe User, type: :model do
 
   describe "associations" do
     context 'labels' do
-      it { is_expected.to have_and_belong_to_many(:labels) }
-      # it { is_expected.to have_many(:labels_users) }
-      # it { is_expected.to have_many(:labels).through(:labels_users) }
+      # it { is_expected.to have_and_belong_to_many(:labels) }
+      it { is_expected.to have_many(:user_labels) }
+      it { is_expected.to have_many(:labels).through(:user_labels) }
       it "shouldn't allow duplicate labels" do
         subject.labels << label
         subject.labels << label

@@ -29,14 +29,13 @@ describe Label, type: :model do
 
   describe "associations" do
     context 'users' do
-      it { is_expected.to have_and_belong_to_many(:users) }
-      # it { is_expected.to have_many(:labels_users) }
-      # it { is_expected.to have_many(:users).through(:labels_users) }
+      # it { is_expected.to have_and_belong_to_many(:users) }
+      it { is_expected.to have_many(:user_labels) }
+      it { is_expected.to have_many(:users).through(:user_labels) }
       it "shouldn't allow duplicate users" do
         subject.users << user
         subject.users << user
-        # is_expected.to_not be_valid
-        is_expected.users.to have(1).items
+        is_expected.to_not be_valid
       end
     end
   end
