@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   def index
-    @users = User.all.includes(:labels)
+    @users = User.all.order(role: :desc).includes(:labels)
     authorize User
   end
 
